@@ -1,157 +1,355 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState } from 'react';
 import PageLayout from '../components/PageLayout';
+
+/* ── Fee data ── */
+const feeGroups = [
+    {
+        id: 'industry', label: '🏭 Industry Professionals',
+        rows: [
+            { name: 'PES Member', ebIn: 'XXXXX', ebFo: 'XXXXX', stIn: 'XXXXX', stFo: 'XXXXX' },
+            { name: 'IEEE Member', ebIn: '₹ 9,000', ebFo: '300 USD', stIn: '₹ 10,000', stFo: '350 USD' },
+            { name: 'Non-Member', ebIn: '₹ 10,000', ebFo: '350 USD', stIn: '₹ 11,000', stFo: '400 USD' },
+        ]
+    },
+    {
+        id: 'academia', label: '🎓 Academia',
+        rows: [
+            { name: 'PES Member', ebIn: 'XXXXX', ebFo: 'XXXXX', stIn: 'XXXXX', stFo: 'XXXXX' },
+            { name: 'IEEE Member', ebIn: '₹ 8,000', ebFo: '250 USD', stIn: '₹ 9,000', stFo: '300 USD' },
+            { name: 'Non-Member', ebIn: '₹ 9,000', ebFo: '300 USD', stIn: '₹ 10,000', stFo: '350 USD' },
+        ]
+    },
+    {
+        id: 'students', label: '📚 Students / Additional Delegates',
+        rows: [
+            { name: 'Student PES Member', ebIn: 'XXXXX', ebFo: 'XXXXX', stIn: 'XXXXX', stFo: 'XXXXX' },
+            { name: 'IEEE Member', ebIn: '₹ 6,000', ebFo: '150 USD', stIn: '₹ 7,000', stFo: '200 USD' },
+            { name: 'Non-Member', ebIn: '₹ 7,000', ebFo: '200 USD', stIn: '₹ 8,000', stFo: '250 USD' },
+            { name: 'Student Non-IEEE Member', ebIn: 'XXXXX', ebFo: 'XXXXX', stIn: 'XXXXX', stFo: 'XXXXX' },
+        ]
+    },
+    {
+        id: 'life', label: '⭐ IEEE Life Member',
+        rows: [
+            { name: 'IEEE Life Member', ebIn: '₹ 6,000', ebFo: '150 USD', stIn: '₹ 7,000', stFo: '200 USD' },
+        ]
+    },
+    {
+        id: 'addpaper', label: '📄 Additional Paper',
+        rows: [
+            { name: 'Additional Paper', ebIn: 'XXXXX', ebFo: 'XXXXX', stIn: 'XXXXX', stFo: 'XXXXX' },
+        ]
+    },
+    {
+        id: 'nonpresenter', label: '👤 Non-Presenters',
+        rows: [
+            { name: 'Non-Presenter PES Member', ebIn: 'XXXXX', ebFo: 'XXXXX', stIn: 'XXXXX', stFo: 'XXXXX' },
+            { name: 'Non-Presenter IEEE Member', ebIn: 'XXXXX', ebFo: 'XXXXX', stIn: 'XXXXX', stFo: 'XXXXX' },
+            { name: 'Non-Presenter Non-IEEE Member', ebIn: 'XXXXX', ebFo: 'XXXXX', stIn: 'XXXXX', stFo: 'XXXXX' },
+        ]
+    },
+];
+
+/* ── Collapsible fee table ── */
+const FeeTable = () => {
+    const allIds = feeGroups.map(g => g.id);
+    const [open, setOpen] = useState({});
+    const allExpanded = allIds.every(id => open[id]);
+
+    const toggle = (id) => setOpen(prev => ({ ...prev, [id]: !prev[id] }));
+    const toggleAll = () => {
+        if (allExpanded) { setOpen({}); }
+        else { const s = {}; allIds.forEach(id => { s[id] = true; }); setOpen(s); }
+    };
+
+    const cellBase = { padding: '11px 14px', fontSize: '0.96rem', color: '#444' };
+    const labelCell = { ...cellBase, textAlign: 'left', paddingLeft: '28px' };
+    const midCell = { ...cellBase, borderRight: '1px solid #eee' };
+
+    return (
+        <>
+            {/* Expand All toggle */}
+            <div style={{ display: 'flex', justifyContent: 'flex-end', marginBottom: '10px' }}>
+                <button
+                    onClick={toggleAll}
+                    className={`btn-expand-all${allExpanded ? ' is-expanded' : ''}`}
+                >
+                    <i className={`fas ${allExpanded ? 'fa-eye-slash' : 'fa-eye'}`}></i>
+                    {allExpanded ? 'Collapse All' : 'Expand All'}
+                </button>
+            </div>
+
+            <div style={{ border: '1px solid #e0e0e0', borderRadius: '10px', overflow: 'hidden', overflowX: 'auto' }}>
+                <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'center', backgroundColor: '#fff', minWidth: '700px' }}>
+                    <thead>
+                        <tr style={{ backgroundColor: '#00629b', color: '#fff' }}>
+                            <th rowSpan={2} style={{ padding: '14px 15px', borderBottom: '2px solid #004a7c', borderRight: '1px solid #004a7c', textAlign: 'left', fontWeight: 'bold', minWidth: '220px' }}>
+                                Categories
+                            </th>
+                            <th colSpan={2} style={{ padding: '14px 15px', borderBottom: '1px solid #004a7c', borderRight: '1px solid #004a7c', fontWeight: 'bold' }}>
+                                Early Bird<br /><span style={{ fontSize: '0.78rem', fontWeight: 'normal' }}>Before 15 Sep 2026</span>
+                            </th>
+                            <th colSpan={2} style={{ padding: '14px 15px', borderBottom: '1px solid #004a7c', fontWeight: 'bold' }}>
+                                Standard<br /><span style={{ fontSize: '0.78rem', fontWeight: 'normal' }}>16 Sep – 1 Nov 2026</span>
+                            </th>
+                        </tr>
+                        <tr style={{ backgroundColor: '#004b79', color: '#fff' }}>
+                            {['Indian Delegates', 'Foreign Delegates', 'Indian Delegates', 'Foreign Delegates'].map((h, i) => (
+                                <th key={i} style={{ padding: '9px 12px', borderBottom: '2px solid #004a7c', fontWeight: '600', fontSize: '0.85rem', ...(i === 1 ? { borderRight: '1px solid #004a7c' } : {}) }}>{h}</th>
+                            ))}
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {feeGroups.map((group) => (
+                            <React.Fragment key={group.id}>
+                                {/* Group header — clickable */}
+                                <tr
+                                    onClick={() => toggle(group.id)}
+                                    style={{ backgroundColor: open[group.id] ? '#d8edf9' : '#eaf3fb', cursor: 'pointer', transition: 'background 0.2s', userSelect: 'none' }}
+                                    onMouseEnter={e => e.currentTarget.style.backgroundColor = '#c8e3f5'}
+                                    onMouseLeave={e => e.currentTarget.style.backgroundColor = open[group.id] ? '#d8edf9' : '#eaf3fb'}
+                                >
+                                    <td colSpan={5} style={{
+                                        padding: '11px 15px', textAlign: 'left', fontWeight: 'bold',
+                                        color: '#00629b', fontSize: '1rem',
+                                        borderBottom: open[group.id] ? '1px solid #b8d8f0' : '1px solid #d0e4f5',
+                                        display: 'flex', alignItems: 'center', justifyContent: 'space-between'
+                                    }}>
+                                        <span>{group.label}</span>
+                                        <span style={{
+                                            fontSize: '0.8rem', color: '#00629b',
+                                            transform: open[group.id] ? 'rotate(180deg)' : 'rotate(0deg)',
+                                            transition: 'transform 0.3s ease', display: 'inline-block'
+                                        }}>
+                                            <i className="fas fa-chevron-down"></i>
+                                        </span>
+                                    </td>
+                                </tr>
+
+                                {/* Animated sub-rows */}
+                                {group.rows.map((row, ri) => (
+                                    <tr key={ri} style={{
+                                        backgroundColor: ri % 2 === 0 ? '#fff' : '#f8f9fa',
+                                        borderBottom: '1px solid #eee',
+                                        display: open[group.id] ? 'table-row' : 'none',
+                                        animation: open[group.id] ? `fadeSlideIn 0.2s ease ${ri * 0.04}s both` : 'none',
+                                    }}>
+                                        <td style={labelCell}>{row.name}</td>
+                                        <td style={cellBase}>{row.ebIn}</td>
+                                        <td style={midCell}>{row.ebFo}</td>
+                                        <td style={cellBase}>{row.stIn}</td>
+                                        <td style={cellBase}>{row.stFo}</td>
+                                    </tr>
+                                ))}
+                            </React.Fragment>
+                        ))}
+
+                        {/* Add-ons — always visible */}
+                        <tr style={{ backgroundColor: '#fffde7' }}>
+                            <td colSpan={5} style={{ padding: '12px 15px', textAlign: 'left', fontWeight: 'bold', color: '#7a6000', fontSize: '0.97rem', borderTop: '2px solid #f9e400' }}>
+                                🍽️ *Add-on Gala Dinner (companion) — XXXXX
+                            </td>
+                        </tr>
+                        <tr style={{ backgroundColor: '#f3f0ff' }}>
+                            <td colSpan={5} style={{ padding: '12px 15px', textAlign: 'left', fontWeight: 'bold', color: '#4a3b8c', fontSize: '0.97rem', borderTop: '2px solid #c5b8ff' }}>
+                                🔬 Technical Visit – Green Energy Testbed — XXXXX
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <style>{`
+                @keyframes fadeSlideIn {
+                    from { opacity: 0; transform: translateY(-6px); }
+                    to   { opacity: 1; transform: translateY(0); }
+                }
+            `}</style>
+        </>
+    );
+};
+
+/* ── Terms & Conditions sections ── */
+const tcSections = [
+    {
+        title: 'Items Included in Registration Fee',
+        body: (<>
+            <p style={{ fontWeight: '600', marginBottom: '8px' }}>Regular (Early Bird / Standard) includes:</p>
+            <ul style={{ paddingLeft: '20px', marginBottom: '16px' }}>
+                <li>Conference kit</li>
+                <li>Admission to all sessions, tea/coffee breaks, and lunches</li>
+                <li>Conference gala dinner</li>
+            </ul>
+            <p style={{ fontWeight: '600', marginBottom: '8px' }}>Non-Presenter / Companion includes:</p>
+            <ul style={{ paddingLeft: '20px' }}>
+                <li>Conference kit</li>
+                <li>Admission to all sessions, tea/coffee breaks, and lunches</li>
+                <li>Gala dinner available as add-on</li>
+            </ul>
+        </>)
+    },
+    {
+        title: 'Early Registration (Early Bird)',
+        body: <p>Authors paying by <strong>15 September 2026</strong> benefit from the Early Bird rate.</p>
+    },
+    {
+        title: 'IEEE & PES Members Registration',
+        body: <p>IEEE &amp; PES members receive a discount. Indicate your <strong>IEEE membership number</strong> during registration and bring your membership card to the conference.</p>
+    },
+    {
+        title: 'Student Rates',
+        body: <p>Eligible for full-time undergraduate or postgraduate students. Email a scanned Student ID to <a href="mailto:contact@ispec2026.org" style={{ color: '#2e8b57' }}>contact@ispec2026.org</a> and bring it to the conference.</p>
+    },
+    {
+        title: 'Payment of Registration Fees',
+        body: (<>
+            <p style={{ marginBottom: '10px' }}><strong>International participants:</strong> Payable in USD via credit card through the iSPEC 2026 registration portal.</p>
+            <p style={{ marginBottom: '10px' }}><strong>Indian participants:</strong> Payable in INR via NEFT / RTGS / UPI. Bank details communicated upon acceptance.</p>
+            <p>All bank charges are borne by the participant. Email proof of payment to <a href="mailto:contact@ispec2026.org" style={{ color: '#2e8b57' }}>contact@ispec2026.org</a>.</p>
+        </>)
+    },
+    {
+        title: 'No-Show and Originality Policy',
+        body: (<>
+            <p style={{ marginBottom: '10px' }}>IEEE has a strict <strong>"NO-SHOW"</strong> policy — authors who do not present risk exclusion from <strong>IEEE Xplore</strong>. One author or representative <strong>MUST</strong> present the paper.</p>
+            <p>Papers with a <strong>similarity index above 30%</strong> will be rejected.</p>
+        </>)
+    },
+    {
+        title: 'Cancellation Policy',
+        body: (<>
+            <p style={{ marginBottom: '10px' }}>Cancellations must be notified in writing to <a href="mailto:contact@ispec2026.org" style={{ color: '#2e8b57' }}>contact@ispec2026.org</a>.</p>
+            <ul style={{ paddingLeft: '20px' }}>
+                <li style={{ marginBottom: '8px' }}>Cancellations <strong>before 1 November 2026</strong>: subject to a <strong>50% charge</strong>.</li>
+                <li style={{ marginBottom: '8px' }}>Registration may be <strong>transferred</strong> to another person free of charge.</li>
+                <li><strong>No refund</strong> after <strong>1 November 2026</strong>.</li>
+            </ul>
+        </>)
+    },
+    {
+        title: 'Disclaimer',
+        body: <p style={{ textAlign: 'justify' }}>Every effort will be made to deliver the program as published. The conference reserves the right to make changes without prior notice. Participants are advised to obtain personal travel insurance. The conference does not compensate for booking cancellations, loss, theft, or damages.</p>
+    },
+];
+
+/* ══════════════════════════════════════════════════ */
 
 const RegistrationPage = () => {
     return (
         <PageLayout title="Registration">
-            <div className="container" style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 15px' }}>
-                <div id="breadcrumbs" style={{ padding: '20px 0', fontSize: '0.9rem', color: '#666' }}>
-                    <span><span><Link to="/" style={{ color: '#00629b', textDecoration: 'none' }}>Home</Link></span> » <span className="breadcrumb_last" aria-current="page">Registration</span></span>
+            <div className="container" style={{ maxWidth: '1000px', margin: '0 auto', padding: '0 15px', paddingBottom: '60px' }}>
+
+                {/* Intro */}
+                <div style={{ marginBottom: '40px', fontSize: '1.1rem', lineHeight: '1.6', color: '#444' }}>
+                    <p style={{ marginBottom: '20px' }}>The registration page is not open yet.</p>
+                    <p style={{ marginBottom: '20px' }}>
+                        All registration fees are in Indian Rupees (INR) and include applicable taxes. For online registration, payment methods will be credit card, debit card, or net banking (the sender is responsible for all banking fees).
+                    </p>
+                    <div style={{ marginTop: '25px' }}>
+                        <a href="#" style={{
+                            background: '#2e8b57', color: '#fff', padding: '12px 25px', borderRadius: '50px',
+                            fontSize: '1.05rem', fontWeight: 'bold', textDecoration: 'none', display: 'inline-block',
+                            boxShadow: '0 4px 10px rgba(16,167,47,0.2)', transition: 'transform 0.2s, background 0.2s'
+                        }}>Registration Coming Soon!</a>
+                    </div>
                 </div>
 
-                <div className="section-content" style={{ paddingBottom: '60px' }}>
-                    <h2 style={{ fontSize: '2rem', marginBottom: '30px', color: '#333' }}><span>Registration Fee Table</span></h2>
+                <div style={{ height: '1px', background: '#e0e0e0', margin: '40px 0' }}></div>
 
-                    <div style={{ marginBottom: '40px' }}>
-                        <div className="table-responsive" style={{ overflowX: 'auto', marginBottom: '20px' }}>
-                            <table style={{ width: '100%', borderCollapse: 'collapse', border: '1px solid #ddd', fontSize: '1.05rem' }}>
-                                <thead>
-                                    <tr style={{ background: '#f8f9fa' }}>
-                                        <th style={{ padding: '15px', border: '1px solid #ddd', textAlign: 'left' }}><strong>Registration Category</strong></th>
-                                        <th style={{ padding: '15px', border: '1px solid #ddd', textAlign: 'left' }}><strong>Author and Early Bird Fee</strong><br /><span style={{ fontSize: '0.9rem', fontWeight: 'normal' }}>(Before 15 July 2026)</span></th>
-                                        <th style={{ padding: '15px', border: '1px solid #ddd', textAlign: 'left' }}><strong>Regular Fee</strong><br /><span style={{ fontSize: '0.9rem', fontWeight: 'normal' }}>(16 July to 9 August 2026)</span></th>
-                                        <th style={{ padding: '15px', border: '1px solid #ddd', textAlign: 'left' }}><strong>On Site Fee</strong><br /><span style={{ fontSize: '0.9rem', fontWeight: 'normal' }}>(After 9 August 2026)</span></th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td style={{ padding: '15px', border: '1px solid #ddd' }}>IEEE PES Society Member</td>
-                                        <td style={{ padding: '15px', border: '1px solid #ddd' }}>SGD 950.00</td>
-                                        <td style={{ padding: '15px', border: '1px solid #ddd' }}>SGD 1,140.00</td>
-                                        <td style={{ padding: '15px', border: '1px solid #ddd' }}>SGD 1,370.00</td>
-                                    </tr>
-                                    <tr style={{ background: '#f8f9fa' }}>
-                                        <td style={{ padding: '15px', border: '1px solid #ddd' }}>IEEE Member</td>
-                                        <td style={{ padding: '15px', border: '1px solid #ddd' }}>SGD 1,095.00</td>
-                                        <td style={{ padding: '15px', border: '1px solid #ddd' }}>SGD 1,315.00</td>
-                                        <td style={{ padding: '15px', border: '1px solid #ddd' }}>SGD 1,575.00</td>
-                                    </tr>
-                                    <tr>
-                                        <td style={{ padding: '15px', border: '1px solid #ddd' }}>Non-Member</td>
-                                        <td style={{ padding: '15px', border: '1px solid #ddd' }}>SGD 1,425.00</td>
-                                        <td style={{ padding: '15px', border: '1px solid #ddd' }}>SGD 1,710.00</td>
-                                        <td style={{ padding: '15px', border: '1px solid #ddd' }}>SGD 2,055.00</td>
-                                    </tr>
-                                    <tr style={{ background: '#f8f9fa' }}>
-                                        <td style={{ padding: '15px', border: '1px solid #ddd' }}>IEEE PES Student Member</td>
-                                        <td style={{ padding: '15px', border: '1px solid #ddd' }}>SGD 475.00</td>
-                                        <td style={{ padding: '15px', border: '1px solid #ddd' }}>SGD 570.00</td>
-                                        <td style={{ padding: '15px', border: '1px solid #ddd' }}>SGD 685.00</td>
-                                    </tr>
-                                    <tr>
-                                        <td style={{ padding: '15px', border: '1px solid #ddd' }}>IEEE Student Member</td>
-                                        <td style={{ padding: '15px', border: '1px solid #ddd' }}>SGD 570.00</td>
-                                        <td style={{ padding: '15px', border: '1px solid #ddd' }}>SGD 685.00</td>
-                                        <td style={{ padding: '15px', border: '1px solid #ddd' }}>SGD 825.00</td>
-                                    </tr>
-                                    <tr style={{ background: '#f8f9fa' }}>
-                                        <td style={{ padding: '15px', border: '1px solid #ddd' }}>IEEE Life Member</td>
-                                        <td style={{ padding: '15px', border: '1px solid #ddd' }}>SGD 475.00</td>
-                                        <td style={{ padding: '15px', border: '1px solid #ddd' }}>SGD 570.00</td>
-                                        <td style={{ padding: '15px', border: '1px solid #ddd' }}>SGD 685.00</td>
-                                    </tr>
-                                    <tr>
-                                        <td style={{ padding: '15px', border: '1px solid #ddd' }}>Additional Paper</td>
-                                        <td colSpan="3" style={{ padding: '15px', border: '1px solid #ddd' }}>SGD 200.00</td>
-                                    </tr>
-                                    <tr style={{ background: '#f8f9fa' }}>
-                                        <td style={{ padding: '15px', border: '1px solid #ddd' }}>Tutorial only (24 August 2026)</td>
-                                        <td colSpan="2" style={{ padding: '15px', border: '1px solid #ddd' }}>SGD 300.00</td>
-                                        <td style={{ padding: '15px', border: '1px solid #ddd' }}>SGD 400.00</td>
-                                    </tr>
-                                    <tr>
-                                        <td style={{ padding: '15px', border: '1px solid #ddd' }}>Tutorial only (24 August 2026) Student</td>
-                                        <td colSpan="2" style={{ padding: '15px', border: '1px solid #ddd' }}>SGD 200.00</td>
-                                        <td style={{ padding: '15px', border: '1px solid #ddd' }}>SGD 300.00</td>
-                                    </tr>
-                                    <tr style={{ background: '#f8f9fa' }}>
-                                        <td style={{ padding: '15px', border: '1px solid #ddd' }}>Banquet</td>
-                                        <td colSpan="2" style={{ padding: '15px', border: '1px solid #ddd' }}>SGD 200.00</td>
-                                        <td style={{ padding: '15px', border: '1px solid #ddd' }}>Contact Secretariat</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                        <p style={{ fontStyle: 'italic', color: '#666' }}>
-                            All fees are quoted in Singapore Dollars (SGD) (Please note: iSPEC 2026 might adapt this to INR if needed based on location).<br />
-                            All deadlines are based on the UTC +08:00 time zone.
+                {/* Registration Fees */}
+                <section style={{ marginBottom: '50px' }}>
+                    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '20px', flexWrap: 'wrap', gap: '10px' }}>
+                        <h2 style={{ fontSize: '1.8rem', color: '#333', fontWeight: 'bold', margin: 0 }}>Registration Fees</h2>
+                        <span style={{ fontSize: '0.9rem', color: '#888' }}>
+                            <i className="fas fa-info-circle" style={{ marginRight: '5px' }}></i>
+                            Click any category header to expand / collapse
+                        </span>
+                    </div>
+                    <FeeTable />
+                    <p style={{ marginTop: '15px', fontStyle: 'italic', color: '#666', fontSize: '0.95rem' }}>
+                        * IEEE membership must be active and verified during registration. A valid student ID must be provided for student categories. All fees are inclusive of applicable taxes.
+                    </p>
+                </section>
+
+                {/* Registration Period */}
+                <h3 style={{ fontSize: '1.4rem', color: '#00629b', marginBottom: '15px', fontWeight: 'bold', borderLeft: '4px solid #2e8b57', paddingLeft: '10px' }}>Registration Period</h3>
+                <div style={{ marginBottom: '35px', paddingLeft: '14px', fontSize: '1.05rem', color: '#444' }}>
+                    <ul style={{ listStyleType: 'disc', paddingLeft: '20px' }}>
+                        <li style={{ marginBottom: '8px' }}><strong>Early-bird Registration:</strong> until 15 September 2026</li>
+                        <li style={{ marginBottom: '8px' }}><strong>Standard Registration:</strong> 16 September 2026 – 1 November 2026</li>
+                        <li style={{ marginBottom: '8px' }}><strong>Onsite Registration:</strong> After 1 November 2026</li>
+                    </ul>
+                </div>
+
+                {/* Registration Inclusions */}
+                <h3 style={{ fontSize: '1.4rem', color: '#00629b', marginBottom: '20px', fontWeight: 'bold', borderLeft: '4px solid #2e8b57', paddingLeft: '10px' }}>Registration Inclusions</h3>
+                <div style={{ border: '1px solid #e0e0e0', borderRadius: '8px', overflow: 'hidden', marginBottom: '40px', overflowX: 'auto' }}>
+                    <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'center', backgroundColor: '#fff' }}>
+                        <thead>
+                            <tr style={{ backgroundColor: '#00629b', color: '#fff' }}>
+                                {['Category', 'Main Sessions', 'Welcome Reception', 'Conference Banquet', 'Lunches & Coffee Breaks', 'Full Paper Publication'].map((h, i) => (
+                                    <th key={i} style={{ padding: '12px', borderBottom: '2px solid #004a7c', fontWeight: 'bold', textAlign: i === 0 ? 'left' : 'center', minWidth: i === 0 ? '160px' : undefined }}>{h}</th>
+                                ))}
+                            </tr>
+                        </thead>
+                        <tbody style={{ fontSize: '1rem', color: '#444' }}>
+                            <tr style={{ backgroundColor: '#fff', borderBottom: '1px solid #eee' }}>
+                                <td style={{ padding: '12px', textAlign: 'left' }}><strong>Non-student registration (A, B, C, F)</strong></td>
+                                <td style={{ padding: '12px', color: '#2e8b57' }}><i className="fas fa-check"></i></td>
+                                <td style={{ padding: '12px', color: '#2e8b57' }}><i className="fas fa-check"></i></td>
+                                <td style={{ padding: '12px', color: '#2e8b57' }}><i className="fas fa-check"></i></td>
+                                <td style={{ padding: '12px' }}><i className="fas fa-check" style={{ color: '#2e8b57', marginRight: '5px' }}></i>(All days)</td>
+                                <td style={{ padding: '12px' }}><i className="fas fa-check" style={{ color: '#2e8b57', marginRight: '5px' }}></i>(Up to <strong>two</strong> papers)</td>
+                            </tr>
+                            <tr style={{ backgroundColor: '#f8f9fa' }}>
+                                <td style={{ padding: '12px', textAlign: 'left' }}><strong>Student registration (D, E)</strong></td>
+                                <td style={{ padding: '12px', color: '#2e8b57' }}><i className="fas fa-check"></i></td>
+                                <td style={{ padding: '12px', color: '#2e8b57' }}><i className="fas fa-check"></i></td>
+                                <td style={{ padding: '12px', color: '#999' }}>-</td>
+                                <td style={{ padding: '12px' }}><i className="fas fa-check" style={{ color: '#2e8b57', marginRight: '5px' }}></i>(All days)</td>
+                                <td style={{ padding: '12px' }}><i className="fas fa-check" style={{ color: '#2e8b57', marginRight: '5px' }}></i>(Up to <strong>one</strong> paper)</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div style={{ height: '1px', background: '#e0e0e0', margin: '40px 0' }}></div>
+
+                {/* Extra Charges */}
+                <h2 style={{ fontSize: '1.8rem', color: '#333', marginBottom: '20px', fontWeight: 'bold' }}>Extra Charges</h2>
+                <p style={{ fontSize: '1.05rem', color: '#444', marginBottom: '25px', lineHeight: '1.6' }}>
+                    One of the authors (typically the presenter) is responsible for paying the extra page charges and/or the extra paper charges, if applicable.
+                </p>
+                <h3 style={{ fontSize: '1.3rem', color: '#00629b', marginBottom: '10px', fontWeight: 'bold' }}>Extra Page Charge</h3>
+                <p style={{ fontSize: '1.05rem', color: '#444', marginBottom: '25px', lineHeight: '1.6' }}>
+                    Pages exceeding 6 will incur an extra charge of <strong>XXXXX INR</strong> per page (max 2 extra pages, 8 pages total).
+                </p>
+                <h3 style={{ fontSize: '1.3rem', color: '#00629b', marginBottom: '10px', fontWeight: 'bold' }}>Extra Paper Charge</h3>
+                <p style={{ fontSize: '1.05rem', color: '#444', marginBottom: '40px', lineHeight: '1.6' }}>
+                    Papers beyond the covered limit (2 for non-students, 1 for students) incur an extra charge of <strong>INR 12,000</strong> per additional paper.
+                </p>
+
+                <div style={{ height: '1px', background: '#e0e0e0', margin: '40px 0' }}></div>
+
+                {/* Terms & Conditions */}
+                <section style={{ marginBottom: '20px' }}>
+                    <h2 style={{ fontSize: '2rem', color: '#00629b', marginBottom: '30px', fontWeight: 'bold', borderBottom: '3px solid #2e8b57', paddingBottom: '12px' }}>
+                        Terms &amp; Conditions
+                    </h2>
+                    <div style={{ background: '#fff8e1', border: '1px solid #ffe082', borderRadius: '10px', padding: '20px 25px', marginBottom: '30px' }}>
+                        <p style={{ margin: 0, fontSize: '1.05rem', color: '#444', lineHeight: '1.7' }}>
+                            <strong>⚠️ Important:</strong> At least one author of each accepted paper must register. Each registration covers a maximum of <strong>two (2) papers</strong>, with a limit of <strong>6 pages per paper</strong>. Each additional page incurs <strong>XXXXX INR</strong> per page. Payment deadline: <strong>1 November 2026</strong>.
                         </p>
                     </div>
 
-                    <h2 style={{ fontSize: '2rem', marginBottom: '20px', color: '#333', marginTop: '40px' }}><span>Registration Notes</span></h2>
-                    <div style={{ marginBottom: '40px', fontSize: '1.05rem', lineHeight: '1.6', color: '#444' }}>
-                        <ul style={{ paddingLeft: '20px' }}>
-                            <li style={{ marginBottom: '10px' }}>Each registration is valid for one (1) participant only.</li>
-                            <li style={{ marginBottom: '10px' }}>All participants, including co-authors, are required to register individually if they are planning to attend the conference.</li>
-                            <li style={{ marginBottom: '10px' }}>For each accepted paper, <strong>at least one author</strong> must complete the online conference registration by <strong>15 July 2026 (UTC+08:00)</strong> for the paper to be included in the conference technical program.</li>
-                            <li style={{ marginBottom: '10px' }}><strong>Each Full Conference</strong> registration may cover a maximum of two (2) papers and includes a ticket to the conference banquet.</li>
-                            <li style={{ marginBottom: '10px' }}><strong>Student</strong> registration covers one (1) paper and does not include the conference banquet.</li>
-                            <li style={{ marginBottom: '10px' }}>Up to two (2) additional papers may be added to a Full Conference registration at SGD 200 per paper. Student registrations are not eligible for additional paper purchases.</li>
-                        </ul>
-                    </div>
+                    {tcSections.map(({ title, body }, i) => (
+                        <div key={i} style={{ marginBottom: '28px' }}>
+                            <h3 style={{ fontSize: '1.3rem', color: '#00629b', marginBottom: '12px', fontWeight: 'bold', borderLeft: '4px solid #2e8b57', paddingLeft: '10px' }}>{title}</h3>
+                            <div style={{ fontSize: '1.02rem', color: '#444', lineHeight: '1.7', paddingLeft: '14px' }}>{body}</div>
+                        </div>
+                    ))}
+                </section>
 
-                    <h2 style={{ fontSize: '2rem', marginBottom: '20px', color: '#333', marginTop: '40px' }}><span>Refund and Cancellation Policy</span></h2>
-                    <div style={{ marginBottom: '40px', fontSize: '1.05rem', lineHeight: '1.6', color: '#444' }}>
-                        <ul style={{ paddingLeft: '20px' }}>
-                            <li style={{ marginBottom: '10px' }}>All cancellation requests must be submitted in writing to the Conference Secretariat at <a href="mailto:info@ispec2026.org" style={{ color: '#00629b' }}>info@ispec2026.org</a>.</li>
-                            <li style={{ marginBottom: '10px' }}>Approved refunds (if any) will be <strong>processed after the conference</strong>.</li>
-                            <li style={{ marginBottom: '10px' }}>A <strong>non-refundable administrative fee of 10%</strong> of the registration fee will be deducted from all approved refunds.</li>
-                            <li style={{ marginBottom: '10px' }}><strong>No refunds</strong> will be granted after <strong>9 August 2026</strong>, including for no-shows.</li>
-                            <li style={{ marginBottom: '10px' }}><strong>Author registrations are non-refundable</strong> once the paper has been included in the conference program.</li>
-                            <li style={{ marginBottom: '10px' }}>Registration transfers to another individual may be permitted, subject to <strong>Organizing Committee approval</strong> and a written request.</li>
-                        </ul>
-                    </div>
-
-                    <h2 style={{ fontSize: '2rem', marginBottom: '20px', color: '#333', marginTop: '40px' }}><span>Terms and Conditions</span></h2>
-                    <div style={{ marginBottom: '40px', fontSize: '1.05rem', lineHeight: '1.6', color: '#444' }}>
-                        <h3 style={{ fontSize: '1.25rem', marginTop: '20px', marginBottom: '10px', color: '#333' }}><strong>Program Changes</strong></h3>
-                        <ul style={{ paddingLeft: '20px', marginBottom: '15px' }}>
-                            <li>The Organiser reserves the right to modify the program, speakers, venue, or schedule without prior notice.</li>
-                        </ul>
-
-                        <h3 style={{ fontSize: '1.25rem', marginTop: '20px', marginBottom: '10px', color: '#333' }}><strong>Code of Conduct</strong></h3>
-                        <ul style={{ paddingLeft: '20px', marginBottom: '15px' }}>
-                            <li>All attendees are expected to behave professionally and respectfully.</li>
-                            <li>Harassment, discrimination, or disruptive behaviour will not be tolerated and may result in removal from the event without refund, in accordance with IEEE policies</li>
-                        </ul>
-
-                        <h3 style={{ fontSize: '1.25rem', marginTop: '20px', marginBottom: '10px', color: '#333' }}><strong>Photography &amp; Recording</strong></h3>
-                        <ul style={{ paddingLeft: '20px', marginBottom: '15px' }}>
-                            <li>By attending iSPEC 2026, participants consent to being photographed, filmed, or recorded for conference, promotional, and archival purposes.</li>
-                        </ul>
-
-                        <h3 style={{ fontSize: '1.25rem', marginTop: '20px', marginBottom: '10px', color: '#333' }}><strong>Liability Disclaimer</strong></h3>
-                        <ul style={{ paddingLeft: '20px', marginBottom: '15px' }}>
-                            <li>The Organiser shall not be liable for personal injury, loss, or damage to personal property during the event. Attendance is at the participant's own risk.</li>
-                        </ul>
-
-                        <h3 style={{ fontSize: '1.25rem', marginTop: '20px', marginBottom: '10px', color: '#333' }}><strong>Force Majeure</strong></h3>
-                        <ul style={{ paddingLeft: '20px', marginBottom: '15px' }}>
-                            <li>The Organiser shall not be held responsible for delays, interruptions, or cancellations caused by events beyond its reasonable control, including but not limited to natural disasters, public health emergencies, strikes, or government restrictions.</li>
-                        </ul>
-
-                        <h3 style={{ fontSize: '1.25rem', marginTop: '20px', marginBottom: '10px', color: '#333' }}><strong>IEEE Policies</strong></h3>
-                        <ul style={{ paddingLeft: '20px', marginBottom: '15px' }}>
-                            <li>Registration for iSPEC 2026 constitutes acceptance of applicable IEEE policies, including:
-                                <ul style={{ paddingLeft: '20px', marginTop: '10px' }}>
-                                    <li><a href="https://www.ieee.org/security-privacy.html" target="_blank" rel="noopener noreferrer" style={{ color: '#00629b' }}> IEEE Privacy Policy </a></li>
-                                    <li><a href="https://www.ieee.org/conferences/event-terms-and-conditions.html" target="_blank" rel="noopener noreferrer" style={{ color: '#00629b' }}> IEEE Events Terms and Conditions </a></li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
             </div>
         </PageLayout>
     );

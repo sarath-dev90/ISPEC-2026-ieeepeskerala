@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500" width="100%" height="100%">
+  <defs>
+    <style>
+      .dark-green { fill: #1B5E20; }
+      .mid-green { fill: #2E7D32; }
+      .light-green { fill: #4CAF50; }
+      .accent-stroke { stroke: #4CAF50; }
+      .white-stroke { stroke: #FFFFFF; }
+      .font-main { font-family: 'Arial', sans-serif; font-weight: bold; text-anchor: middle; }
+    </style>
+  </defs>
+
+  <rect width="500" height="500" fill="#FAFAFA" rx="20"/>
+
+  <path d="M 250 90 A 140 140 0 1 0 350 330" fill="none" stroke="#4CAF50" stroke-width="16" stroke-linecap="round"/>
+  <polygon points="335,305 385,335 325,360" class="light-green"/>
+
+  <path d="M 330 90 Q 370 40 395 45 Q 390 85 350 120 Z" class="mid-green"/>
+  <path d="M 380 70 Q 425 35 440 45 Q 420 85 390 95 Z" class="light-green"/>
+
+  <g id="wind-turbine">
+    <polygon points="335,260 345,260 342,160 338,160" class="dark-green"/>
+    <path d="M 340 160 L 335 100 L 345 100 Z" class="mid-green"/>
+    <path d="M 340 160 L 385 190 L 378 198 Z" class="mid-green"/>
+    <path d="M 340 160 L 295 190 L 302 198 Z" class="mid-green"/>
+    <circle cx="340" cy="160" r="6" class="dark-green"/>
+  </g>
+
+  <g id="solar-panel">
+    <polygon points="140,240 170,180 250,180 280,240" class="mid-green"/>
+    <line x1="155" y1="210" x2="265" y2="210" class="white-stroke" stroke-width="3"/>
+    <line x1="210" y1="180" x2="210" y2="240" class="white-stroke" stroke-width="3"/>
+    <line x1="190" y1="180" x2="175" y2="240" class="white-stroke" stroke-width="3"/>
+    <line x1="230" y1="180" x2="245" y2="240" class="white-stroke" stroke-width="3"/>
+    <rect x="205" y="240" width="10" height="20" class="dark-green"/>
+    <line x1="150" y1="260" x2="350" y2="260" stroke="#1B5E20" stroke-width="8" stroke-linecap="round"/>
+  </g>
+
+  <text x="250" y="420" font-size="30" class="font-main mid-green">POWER &amp; ENERGY</text>
+  <text x="250" y="460" font-size="38" class="font-main dark-green">SUSTAINABILITY</text>
+
+</svg>

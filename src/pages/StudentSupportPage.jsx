@@ -54,7 +54,7 @@ const StudentSupportPage = () => {
                         </ul>
 
                         <div style={{ marginTop: '40px', padding: '20px', background: '#f8f9fa', borderRadius: '10px' }}>
-                            <p><strong>Inquiries:</strong> Please contact <a href="mailto:ispec2026@gmail.com">ispec2026@gmail.com</a> for any questions.</p>
+                            <p><strong>Inquiries:</strong> Please contact <a href="mailto:contact@ispec2026.org">contact@ispec2026.org</a> for any questions.</p>
                         </div>
                     </section>
                 </div>

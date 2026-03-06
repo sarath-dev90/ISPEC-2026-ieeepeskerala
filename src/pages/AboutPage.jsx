@@ -12,7 +12,6 @@ const AboutPage = () => {
             <main className="page-content">
                 <div className="container">
                     <section className="about-section">
-                        <h2>About iSPEC</h2>
                         <p>
                             The <strong>2026 IEEE Sustainable Power and Energy Conference (iSPEC)</strong> is a leading international conference dedicated to sustainable energy technologies, smart grids, and resilient power systems. It brings together researchers, industry experts, and policymakers to exchange ideas and advancements in the field of power and energy.
                         </p>

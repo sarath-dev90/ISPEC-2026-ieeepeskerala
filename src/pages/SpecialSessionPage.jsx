@@ -6,12 +6,7 @@ const SpecialSessionPage = () => {
     return (
         <PageLayout title="Special Session">
             <div className="container" style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 15px' }}>
-                <div id="breadcrumbs" style={{ padding: '20px 0', fontSize: '0.9rem', color: '#666' }}>
-                    <span><span><Link to="/" style={{ color: '#00629b', textDecoration: 'none' }}>Home</Link></span> » <span className="breadcrumb_last" aria-current="page">Special Session</span></span>
-                </div>
-
                 <div className="section-content" style={{ paddingBottom: '60px' }}>
-                    <h1 style={{ fontSize: '2.5rem', marginBottom: '30px', color: '#333' }}><span>Invitation for Special Session Proposals</span></h1>
 
                     <div style={{ marginBottom: '40px' }}>
                         <div style={{ fontSize: '1.05rem', lineHeight: '1.6', color: '#444' }}>
@@ -90,7 +85,7 @@ const SpecialSessionPage = () => {
                                 All Special Sessions will follow the standard iSPEC peer-review process. Accepted papers will be published in the conference proceedings.<br />
                                 Special Session proposals should be submitted to <strong>special session chair</strong> via email.<br />
                                 For proposal submission details and enquiries, please contact:<br />
-                                <strong>Special Session Chair: </strong>Assoc. Prof. (To Be Announced) <a href="mailto:info@ispec2026.org" style={{ color: '#00629b' }}>info@ispec2026.org</a>
+                                <strong>Special Session Chair: </strong>Assoc. Prof. (To Be Announced) <a href="mailto:contact@ispec2026.org" style={{ color: '#00629b' }}>contact@ispec2026.org</a>
                             </p>
                         </div>
                     </div>

@@ -6,12 +6,7 @@ const PaperSubmissionPage = () => {
     return (
         <PageLayout title="Submission">
             <div className="container" style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 15px' }}>
-                <div id="breadcrumbs" style={{ padding: '20px 0', fontSize: '0.9rem', color: '#666' }}>
-                    <span><span><Link to="/" style={{ color: '#00629b', textDecoration: 'none' }}>Home</Link></span> » <span className="breadcrumb_last" aria-current="page">Submission</span></span>
-                </div>
-
                 <div className="section-content" style={{ paddingBottom: '60px' }}>
-                    <h1 style={{ fontSize: '2.5rem', marginBottom: '30px', color: '#333' }}><span>Manuscript Submission</span></h1>
 
                     <div style={{ display: 'flex', flexWrap: 'wrap', margin: '0 -15px' }}>
                         {/* Left Column (Main Content) */}
@@ -105,10 +100,10 @@ const PaperSubmissionPage = () => {
                                 </div>
                                 <div style={{ fontSize: '1rem', color: '#444' }}>
                                     <div style={{ marginBottom: '10px' }}>
-                                        Technical Program:&nbsp;<a href="mailto:info@ispec2026.org" style={{ color: '#00629b' }}>info@ispec2026.org</a>
+                                        Technical Program:&nbsp;<a href="mailto:contact@ispec2026.org" style={{ color: '#00629b' }}>contact@ispec2026.org</a>
                                     </div>
                                     <div>
-                                        Conference Secretariat:&nbsp;<a href="mailto:info@ispec2026.org" style={{ color: '#00629b' }}>info@ispec2026.org</a>
+                                        Conference Secretariat:&nbsp;<a href="mailto:contact@ispec2026.org" style={{ color: '#00629b' }}>contact@ispec2026.org</a>
                                     </div>
                                 </div>
                             </div>

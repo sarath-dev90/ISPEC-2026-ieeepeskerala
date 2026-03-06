@@ -11,16 +11,16 @@ const About = () => {
                         <img src={Ispeclogo} alt="iSPEC 2026 Sustainable Power Conference" style={{ width: '100%', borderRadius: '15px', boxShadow: 'var(--shadow)' }} />
                     </div>
                     <div className="welcome-text">
-                        <h2 className="section-title">Welcome Message</h2>
+                        <h2 className="section-title">About iSPEC 2026</h2>
                         <div className="divider-line"></div>
                         <p>
-                            We are delighted to invite you to the <strong>2026 IEEE Sustainable Power and Energy Conference (iSPEC)</strong>, taking place in the vibrant city of Trivandrum, Kerala.
+                            The <strong>IEEE Sustainable Power and Energy Conference (iSPEC) 2026</strong> is a premier international forum that brings together researchers, engineers, policymakers, and industry leaders from across the globe to present and discuss the latest advances in power systems, energy technologies, and sustainable solutions.
                         </p>
                         <p>
-                            iSPEC 2026 brings together global experts to discuss the critical challenges and opportunities in building a sustainable and resilient energy future. The conference will feature cutting-edge technical sessions, inspiring keynote speeches, and opportunities to network with leaders in the field.
+                            Hosted at the iconic <strong>Hyatt Regency Trivandrum, Kerala</strong>, and organized by the <strong>IEEE Power &amp; Energy Society (PES) Kerala Chapter</strong> in association with <strong>IEEE Kerala Section</strong>, iSPEC 2026 promises to be a landmark event in the energy sector.
                         </p>
                         <p>
-                            We look forward to welcoming you to Kerala, "God's Own Country", for an unforgettable academic and cultural experience.
+                            The conference will feature high-quality technical paper presentations, keynote addresses by distinguished researchers and industry experts, panel discussions on emerging energy challenges, workshops, tutorials, and a vibrant exhibition floor. All accepted papers will be submitted for inclusion in <strong>IEEE Xplore Digital Library</strong>.
                         </p>
 
                         <div className="welcome-actions">
