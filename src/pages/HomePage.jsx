@@ -253,15 +253,6 @@ const HomePage = () => {
                     <ImportantDates />
                     <Organisers />
 
-                    {/* CMT Acknowledgment Section */}
-                    <div style={{ background: '#f8f9fa', padding: '40px 15px', borderTop: '1px solid #eaeaea' }}>
-                        <div style={{ maxWidth: '1000px', margin: '0 auto', textAlign: 'center' }}>
-                            <p style={{ color: '#555', fontSize: '0.9rem', lineHeight: '1.6', margin: 0 }}>
-                                The Microsoft CMT service was used for managing the peer-reviewing process for this conference. This service was provided for free by Microsoft and they bore all expenses, including costs for Azure cloud services as well as for software development and support.
-                            </p>
-                        </div>
-                    </div>
-
                     {/* Close the overlapping container */}
                 </div>
             </div>
