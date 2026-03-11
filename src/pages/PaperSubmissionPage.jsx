@@ -36,7 +36,7 @@ const PaperSubmissionPage = () => {
                                 <h2 style={{ margin: '30px 0 8px 0', padding: '2px', fontSize: '2rem', color: '#333' }}>Submission Portal</h2>
                                 <p>Authors are required to submit their manuscripts through the official conference submission system Microsoft CMT. Please ensure that your paper complies with all IEEE PES guidelines before submission.</p>
                                 <p style={{ lineHeight: '1.0' }}>
-                                    <a style={{ marginTop: '0', color: '#00629b' }} href="https://cmt3.research.microsoft.com/APPEEC2026/Submission/Index" target="_blank" rel="noopener noreferrer">
+                                    <a style={{ marginTop: '0', color: '#00629b' }} href="https://cmt3.research.microsoft.com/ISPEC2026" target="_blank" rel="noopener noreferrer">
                                         Microsoft CMT – iSPEC 2026 Submission<br />
                                     </a>
                                 </p>
@@ -67,7 +67,7 @@ const PaperSubmissionPage = () => {
 
                                     <div>
                                         <div style={{ textAlign: 'center', marginBottom: '10px', padding: '14px 12px', borderRadius: '8px', fontWeight: '600', fontSize: '14px', background: '#e6f4ef' }}>
-                                            <a style={{ textDecoration: 'none', color: '#00629b' }} href="https://cmt3.research.microsoft.com/APPEEC2026/Submission/Index" target="_blank" rel="noopener noreferrer">
+                                            <a style={{ textDecoration: 'none', color: '#00629b' }} href="https://cmt3.research.microsoft.com/ISPEC2026" target="_blank" rel="noopener noreferrer">
                                                 Microsoft CMT Portal
                                             </a>
                                         </div>
