@@ -1,8 +1,0 @@
-﻿
-   C:\Users\nithi\Desktop\pes\ISPEC-2026-ieeepeskerala\Home _ Anthropic.html
-[37m      L1189 |[90m...nt-visibility: visible;"><defs><clippath id="__lottie_element_2"><rect width="143" height="16" x="0" ...[39m
-[37m                                                        ^ [31mThe id value [ __lottie_element_2 ] must be unique. (id-unique)[39m
-[37m      L1189 |[90m...3,16 L0,16z"></path></clippath><clippath id="__lottie_element_35"><path d="M0,0 L143,0 L143,16 L0,16z...[39m
-[37m                                                        ^ [31mThe id value [ __lottie_element_35 ] must be unique. (id-unique)[39m
-
-Scanned 1 files, found 2 errors in 1 files (27 ms)
