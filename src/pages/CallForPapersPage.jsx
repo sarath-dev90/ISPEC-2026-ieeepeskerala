@@ -8,7 +8,9 @@ const tracks = [
         title: 'Track 1: Renewable Energy & Sustainable Technologies',
         topics: [
             'Advanced solar PV modeling, forecasting, and performance optimization',
-            'Wind energy conversion systems and hybrid renewable integration',
+            'Wind energy conversion systems',
+            'hybrid energy systems',
+            'renewable integration',
             'Green hydrogen and fuel cells',
             'Biomass, waste-to-energy, and circular energy systems',
             'Sustainability assessment, carbon neutrality, and life cycle analysis'
@@ -22,7 +24,8 @@ const tracks = [
             'Microgrids and resilient distributed energy architectures',
             'Grid hardening strategies against extreme weather events',
             'Black start capability and system restoration techniques',
-            'Wide-area monitoring systems (WAMS) and synchrophasor applications'
+            'Wide-area monitoring systems (WAMS) and synchrophasor applications',
+            'Power quality issues and solutions'
         ]
     },
     {
@@ -44,7 +47,8 @@ const tracks = [
             'Digital twins for power systems',
             'DER Integration and IoT-enabled smart energy management systems',
             'Cybersecurity in smart grid infrastructure',
-            'Big data analytics and cloud computing in utilities'
+            'Big data analytics and cloud computing in utilities',
+            'HIL /SIL  based simulation systems'
         ]
     },
     {
@@ -66,7 +70,8 @@ const tracks = [
             'Supercapacitors and hybrid storage systems',
             'Grid-scale storage integration and control',
             'Thermal energy storage systems',
-            'Degradation modeling and lifetime prediction of storage systems'
+            'Degradation modeling and lifetime prediction of storage systems',
+            'Design and siting of energy storage systems'
         ]
     },
     {
@@ -77,6 +82,16 @@ const tracks = [
             'Transactive Energy Systems and Blockchain Applications',
             'Regulatory and Policy Frameworks for Distributed Energy Resources and Energy Trading',
             'Market Design, Demand Response Programs, and Governance Models for Future Energy Systems'
+        ]
+    },
+    {
+        id:'track8',
+        title:'Track 8: Advanced Power Converters and Electric Drives for Sustainable Energy Systems  ',
+        topics:[
+            'High-Efficient Power Converters for Renewable Integration',
+            'Electric Drives for Sustainable Transportation and Industrial Electrification',
+            'Grid-Interactive Power Electronics and Energy Storage Systems',
+            'Advanced Modulation, Control, and AI-Based Optimization in Power Electronics'
         ]
     }
 ];
