@@ -2,6 +2,10 @@ import React, { useRef, useLayoutEffect } from 'react';
 import Hero from '../components/Hero';
 import ImportantDates from '../components/ImportantDates';
 import Organisers from '../components/Organisers';
+import ieeeLogo from '../assets/ieee.png';
+import ieeePesLogo from '../assets/ieee-pes.png';
+import ieeePesKcLogo from '../assets/ieee-pes-kc.png';
+import ieeeKsLogo from '../assets/ieee-ks.png';
 
 const importantDates = [
     {
@@ -9,7 +13,7 @@ const importantDates = [
         label: <><span style={{ backgroundColor: '#2e8b57', color: 'white', padding: '2px 6px', borderRadius: '4px', fontSize: '0.7rem', marginRight: '6px', verticalAlign: 'middle' }}>NEW</span>Paper submission open from 20 March 2026</>,
         icon: 'fa-calendar-plus'
     },
-    { date: '15 August 2026', label: 'Full Paper Submission Deadline', icon: 'fa-file-alt' },
+    { date: '30 June 2026', label: 'Full Paper Submission Deadline', icon: 'fa-file-alt' },
     { date: '30 September 2026', label: 'Notification of Acceptance', icon: 'fa-bell' },
     { date: '15 October 2026', label: 'Camera Ready / Final Paper Deadline', icon: 'fa-check-circle' },
     { date: '1 November 2026', label: 'Registration Deadline', icon: 'fa-id-card' },
@@ -172,41 +176,35 @@ const HomePage = () => {
                                 {/* News */}
                                 <div>
                                     <SectionTitle>Latest News</SectionTitle>
-                                    {/* 
                                     <div style={{
-                                        background: '#fafafa', borderRadius: '8px', padding: '20px',
-                                        border: '1px solid #eaeaea'
+                                        background: '#fafafa', borderRadius: '8px', padding: '15px 20px',
+                                        border: '1px solid #eaeaea', display: 'flex', alignItems: 'center',
+                                        boxShadow: '0 2px 10px rgba(0,0,0,0.02)'
                                     }}>
-                                        <a href="#" style={{
-                                            color: '#1a1a2e', textDecoration: 'none', fontWeight: '600',
-                                            fontSize: '1.05rem', display: 'block', marginBottom: '8px', lineHeight: '1.4',
-                                            transition: 'color 0.2s ease'
-                                        }}
-                                            onMouseEnter={e => e.target.style.color = '#2e8b57'}
-                                            onMouseLeave={e => e.target.style.color = '#1a1a2e'}>
-                                            Website for IEEE iSPEC 2026 is Now Open!
-                                        </a>
-                                        <div style={{ fontSize: '0.85rem', color: '#777', display: 'flex', alignItems: 'center', gap: '6px' }}>
-                                            <i className="fas fa-calendar-alt"></i> 1st March 2026
+                                        <div style={{ marginRight: '15px', color: '#00629b', display: 'flex', alignItems: 'center' }}>
+                                            <i className="fas fa-bullhorn" style={{ fontSize: '1.2rem' }}></i>
                                         </div>
+                                        {/* eslint-disable-next-line jsx-a11y/no-distracting-elements */}
+                                        <marquee behavior="scroll" direction="left" style={{ color: '#1a1a2e', fontWeight: '600', fontSize: '1.05rem', padding: '5px 0' }}>
+                                            Home screen Papers accepted in conference published in ieee explore
+                                        </marquee>
                                     </div>
-                                    */}
-                                    <div style={{ height: '100px' }}></div>
+                                    <div style={{ height: '30px' }}></div>
                                 </div>
 
                                 {/* Sponsors */}
                                 <div>
                                     <SectionTitle>Sponsors</SectionTitle>
                                     <div style={{
-                                        display: 'flex', flexWrap: 'wrap', gap: '20px', alignItems: 'center'
+                                        display: 'flex', flexWrap: 'wrap', gap: '40px', alignItems: 'center'
                                     }}>
                                         <a href="https://www.ieee.org" target="_blank" rel="noreferrer" style={{ transition: 'opacity 0.2s', opacity: 0.9 }} onMouseEnter={e => e.target.style.opacity = 1} onMouseLeave={e => e.target.style.opacity = 0.9}>
-                                            <img src="https://brand-experience.ieee.org/wp-content/uploads/2021/05/ieee-mb-blue-tag-png_1713x695.png" alt="IEEE"
+                                            <img src={ieeeLogo} alt="IEEE"
                                                 style={{ height: '45px', width: 'auto', objectFit: 'contain' }} />
                                         </a>
                                         <a href="https://www.ieee-pes.org" target="_blank" rel="noreferrer" style={{ transition: 'opacity 0.2s', opacity: 0.9 }} onMouseEnter={e => e.target.style.opacity = 1} onMouseLeave={e => e.target.style.opacity = 0.9}>
-                                            <img src="https://www.ieee-pes.org/wp-content/uploads/2023/02/ieee_pes_logo.svg" alt="IEEE PES"
-                                                style={{ height: '45px', width: 'auto', objectFit: 'contain' }} />
+                                            <img src={ieeePesLogo} alt="IEEE PES"
+                                                style={{ height: '75px', width: 'auto', objectFit: 'contain' }} />
                                         </a>
                                     </div>
                                 </div>
@@ -215,15 +213,15 @@ const HomePage = () => {
                                 <div>
                                     <SectionTitle>Supporters</SectionTitle>
                                     <div style={{
-                                        display: 'flex', flexWrap: 'wrap', gap: '24px', alignItems: 'center'
+                                        display: 'flex', flexWrap: 'wrap', gap: '40px', alignItems: 'center'
                                     }}>
                                         <a href="https://ieeekerala.org" target="_blank" rel="noreferrer" style={{ transition: 'opacity 0.2s', opacity: 0.85 }} onMouseEnter={e => e.target.style.opacity = 1} onMouseLeave={e => e.target.style.opacity = 0.85}>
-                                            <img src="https://ieeekerala.org/wp-content/uploads/2020/01/IEEE-Kerala-Section-Logo.png" alt="IEEE Kerala Section"
-                                                style={{ height: '48px', width: 'auto', objectFit: 'contain' }} />
+                                            <img src={ieeeKsLogo} alt="IEEE Kerala Section"
+                                                style={{ height: '45px', width: 'auto', objectFit: 'contain' }} />
                                         </a>
                                         <a href="https://ewh.ieee.org/r10/kerala/pes/" target="_blank" rel="noreferrer" style={{ transition: 'opacity 0.2s', opacity: 0.85 }} onMouseEnter={e => e.target.style.opacity = 1} onMouseLeave={e => e.target.style.opacity = 0.85}>
-                                            <img src="https://ewh.ieee.org/r10/kerala/pes/images/logonew.png" alt="IEEE PES Kerala Chapter"
-                                                style={{ height: '52px', width: 'auto', objectFit: 'contain' }} />
+                                            <img src={ieeePesKcLogo} alt="IEEE PES Kerala Chapter"
+                                                style={{ height: '85px', width: 'auto', objectFit: 'contain' }} />
                                         </a>
                                     </div>
                                 </div>

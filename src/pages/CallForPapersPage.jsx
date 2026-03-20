@@ -178,7 +178,7 @@ const CallForPapersPage = () => {
                             <div style={{ fontSize: '1.05rem', lineHeight: '1.6', color: '#444' }}>
                                 <p style={{ marginBottom: '15px' }}>
                                     <strong>Paper Submission</strong><br />
-                                    • Full Paper Deadline: 15 August 2026<br />
+                                    • Full Paper Deadline: 30 June 2026<br />
                                     • Acceptance Notification: 30 September 2026<br />
                                     • Final Paper Submission: 15 October 2026
                                 </p>

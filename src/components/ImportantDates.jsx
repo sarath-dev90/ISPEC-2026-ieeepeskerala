@@ -7,7 +7,7 @@ const ImportantDates = () => {
             date: '20th March 2026',
             status: 'active'
         },
-        { label: 'Full Paper Submission Deadline', date: '15 August 2026', status: 'active' },
+        { label: 'Full Paper Submission Deadline', date: '30 June 2026', status: 'active' },
         { label: 'Notification of Acceptance', date: '30 September 2026', status: 'future' },
         { label: 'Final Paper Submission', date: '15 October 2026', status: 'future' },
         { label: 'Registration Deadline', date: '1 November 2026', status: 'future' },

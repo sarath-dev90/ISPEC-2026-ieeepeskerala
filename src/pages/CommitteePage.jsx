@@ -24,7 +24,7 @@ const committeeData = [
         category: "Technical Program Chairs",
         borderColor: '#2e8b57',
         members: [
-            { name: 'Kumaravel S', role: 'Professor, Electrical Engg. Dept. NIT Calicut' },
+            { name: 'Kumaravel S', role: 'Professor, Electrical Eng. Dept. NIT Calicut' },
             { name: 'Jaison Mathew', role: 'Professor & Head, Electrical Engg. Dept. GEC Thrissur' },
             { name: 'Sobha Manakkal', role: 'Professor & Head, Electrical Engg. Dept, NCERC' },
         ]
@@ -35,7 +35,6 @@ const committeeData = [
         members: [
             { name: 'Rahul Satheesh', role: 'Secretary IEEE PES Kerala Chapter, Assistant Professor Amrita Viswa Vidhyapeetham' },
             { name: 'Harikumar R', role: 'Associate Professor, Electrical Engg Dept., College of Engineering Trivandrum' },
-            { name: 'Rajiv T', role: 'Professor, Electrical Engineering, College of Engineering, Trivandrum' },
         ]
     },
     {
