@@ -147,8 +147,6 @@ const HomePage = () => {
                                             </div>
                                         </div>
                                     </div>
-                                    <div style={{ height: '30px' }}></div>
-                                </div>
 
                                 {/* Sponsors */}
                                 <div>
