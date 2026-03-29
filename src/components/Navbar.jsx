@@ -100,6 +100,7 @@ const Navbar = () => {
                             </span>
                             <ul className={`dropdown-menu ${openDropdown === 'authors' ? 'show' : ''}`}>
                                 <li><Link to="/call-for-papers" onClick={closeMenu}>Call for Papers</Link></li>
+                                <li><Link to="/special-sessions" onClick={closeMenu}>Special Sessions</Link></li>
                                 {/* <li><Link to="/presentation-guideline" onClick={closeMenu}>Presentation Guideline</Link></li>
                                 <li><Link to="/student-support" onClick={closeMenu}>Student Support Fund</Link></li> */}
                                 <li><Link to="/important-dates" onClick={closeMenu}>Important Dates</Link></li>

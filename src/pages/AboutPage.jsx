@@ -22,6 +22,16 @@ const AboutPage = () => {
                             The conference will include keynote speeches, technical sessions, tutorials, workshops, and panel discussions covering a wide range of topics in sustainable power and energy.
                         </p>
 
+                        <h2>Past ISPEC Conferences</h2>
+                        <ul>
+                            <li><strong>IEEE ISPEC 2024</strong>: 24 - 27 November 2024, Sarawak, Malaysia</li>
+                            <li><strong>IEEE iSPEC 2023</strong>: Chongqing, China | 29 - 30 November 2023</li>
+                            <li><strong>IEEE iSPEC 2022</strong>: Perth, Australia | 4 - 7 December 2022</li>
+                            <li><strong>IEEE iSPEC 2021</strong>: Nanjing, China | 25 - 27 November 2021</li>
+                            <li><strong>IEEE iSPEC 2020</strong>: Chengdu, China | 23 - 25 November 2020</li>
+                            <li><strong>IEEE iSPEC 2019</strong>: Beijing, China | 21 - 23 November 2019</li>
+                        </ul>
+
                         <h2>About IEEE</h2>
                         <p>
                             The IEEE (Institute of Electrical and Electronics Engineers, Inc.) is the world’s largest technical professional society. Through its more than 400,000 members in 150 countries, the organization is a leading authority on a wide variety of areas ranging from aerospace systems, computers and telecommunications to biomedical engineering, electric power, and consumer electronics.

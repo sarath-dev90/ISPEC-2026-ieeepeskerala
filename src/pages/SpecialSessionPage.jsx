@@ -85,7 +85,7 @@ const SpecialSessionPage = () => {
                                 All Special Sessions will follow the standard iSPEC peer-review process. Accepted papers will be published in the conference proceedings.<br />
                                 Special Session proposals should be submitted to <strong>special session chair</strong> via email.<br />
                                 For proposal submission details and enquiries, please contact:<br />
-                                <strong>Special Session Chair: </strong>Assoc. Prof. (To Be Announced) <a href="mailto:contact@ispec2026.org" style={{ color: '#00629b' }}>contact@ispec2026.org</a>
+                                <strong>Special Session Chair: </strong>Dr.Boby Philip <a href="mailto:boby.philip@ieee.org" style={{ color: '#00629b' }}>boby.philip@ieee.org</a>
                             </p>
                         </div>
                     </div>
