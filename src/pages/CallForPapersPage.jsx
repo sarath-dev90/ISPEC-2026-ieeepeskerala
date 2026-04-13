@@ -110,7 +110,7 @@ const CallForPapersPage = () => {
 
                     <div style={{ marginBottom: '40px' }}>
                         <h2 style={{ fontSize: '1.5rem', color: '#00629b', marginBottom: '20px', lineHeight: '1.4' }}>
-                            Theme: Empowering a Sustainable Future Through Green Technology and Systems Innovation.
+                            Theme: Integrated Pathways in Sustainable Power and Energy for Carbon Neutrality
                         </h2>
                         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '30px 0' }}>
                             <div style={{ flex: 1, height: '3px', background: '#ccc' }}></div>
@@ -125,7 +125,7 @@ const CallForPapersPage = () => {
                             <div style={{ marginBottom: '40px' }}>
                                 <h2 style={{ fontSize: '2rem', marginBottom: '20px', color: '#333' }}><span>Conference Overview</span></h2>
                                 <div style={{ fontSize: '1.05rem', lineHeight: '1.6', color: '#444' }}>
-                                    <p style={{ margin: '0 0 15px 0' }}>The IEEE Sustainable Power and Energy Conference (iSPEC) 2026 will be held at Hyatt Regency Trivandrum, Kerala under the theme "Empowering a Sustainable Future Through Green Technology and Systems Innovation."</p>
+                                    <p style={{ margin: '0 0 15px 0' }}>The IEEE Sustainable Power and Energy Conference (iSPEC) 2026 will be held at Hyatt Regency Trivandrum, Kerala under the theme "Integrated Pathways in Sustainable Power and Energy for Carbon Neutrality"</p>
                                     <p style={{ margin: '0 0 15px 0' }}>The conference brings together researchers, industry professionals, utilities, policymakers, and educators to exchange ideas and showcase advances in power and energy systems, with a focus on sustainability, digitalization, resilience, and system-level innovation.</p>
                                     <p style={{ margin: '0 0 15px 0' }}>The technical program will include keynote speeches, panel sessions, tutorials, and peer-reviewed paper and poster presentations, highlighting both research breakthroughs and practical applications. With seven technical tracks delivered over three days, iSPEC 2026 provides a dynamic platform for knowledge sharing, collaboration, and professional development.</p>
                                 </div>

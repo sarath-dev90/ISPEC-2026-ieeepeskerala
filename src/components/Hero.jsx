@@ -28,7 +28,7 @@ const Hero = () => {
   const conferenceInfo = {
     title: 'iSPEC 2026',
     subtitle: 'IEEE PES Kerala Chapter',
-    theme: 'Empowering a Sustainable Future Through Green Technology and Systems Innovation.',
+    theme: 'Integrated Pathways in Sustainable Power and Energy for Carbon Neutrality',
     date: 'Dec 4 – 6, 2026',
     venue: 'Thiruvananthapuram, Kerala'
   };
