@@ -13,13 +13,7 @@ const AboutPage = () => {
                 <div className="container">
                     <section className="about-section">
                         <p>
-                            The <strong>2026 IEEE Sustainable Power and Energy Conference (iSPEC)</strong> is a leading international conference dedicated to sustainable energy technologies, smart grids, and resilient power systems. It brings together researchers, industry experts, and policymakers to exchange ideas and advancements in the field of power and energy.
-                        </p>
-                        <p>
-                            iSPEC 2026 is technically co-sponsored by the IEEE Power & Energy Society (PES), ensuring high-quality technical content and global recognition. The conference will be held in the historic and vibrant city of Trivandrum, Kerala, India, offering a unique blend of technical excellence and cultural richness.
-                        </p>
-                        <p>
-                            The conference will include keynote speeches, technical sessions, tutorials, workshops, and panel discussions covering a wide range of topics in sustainable power and energy.
+                            <strong>iSPEC 2026</strong> — the 7th edition of the <strong>IEEE Sustainable Power and Energy Conference</strong> series, by <strong>IEEE Power and Energy Society</strong> brings together researchers, industry professionals, utilities, policymakers, and educators from across the globe to showcase the latest advancements in power and energy systems. Themed around <strong>"Integrated Pathways in Sustainable Power and Energy for Carbon Neutrality,"</strong> this edition places a strong focus on renewable integration, electrification of heavy industries, resiliency, digitalization and systems innovations — driving the conversation forward on building a cleaner, smarter, and more sustainable energy future for all.
                         </p>
 
                         <h2>Past ISPEC Conferences</h2>
