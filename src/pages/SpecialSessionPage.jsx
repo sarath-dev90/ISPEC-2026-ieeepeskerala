@@ -55,22 +55,13 @@ const SpecialSessionPage = () => {
                         <div style={{ flex: '0 0 100%', maxWidth: '100%', padding: '0 15px' }} className="col-lg-4 col-md-12">
                             <h2 style={{ fontSize: '2rem', marginBottom: '20px', color: '#333' }}><span>Important Dates</span></h2>
                             <div style={{ fontSize: '1.05rem', lineHeight: '1.6', color: '#444' }}>
+                               
                                 <p style={{ marginBottom: '15px' }}>
-                                    <strong>Paper Submission</strong><br />
-                                    • Submission Open: 15 February 2026<br />
-                                    • Full Paper Deadline: 15 April 2026<br />
-                                    • Acceptance Notification: 15 June 2026
+                                    <strong>Special Sessions</strong><br />
+                                    • Proposal Deadline: 30 April 2026<br />
+                                    • Decision Notification: 10 May 2026<br />
                                 </p>
-                                <p style={{ marginBottom: '15px' }}>
-                                    <strong>Tutorials &amp; Special Sessions</strong><br />
-                                    • Proposal Deadline: 10 March 2026<br />
-                                    • Decision Notification: 15 March 2026
-                                </p>
-                                <p style={{ marginBottom: '15px' }}>
-                                    <strong>Registration</strong><br />
-                                    • Early Registration Deadline: 15 July 2026<br />
-                                    • Camera-ready Paper Due: 15 July 2026
-                                </p>
+
                             </div>
                         </div>
                     </div>
@@ -82,7 +73,7 @@ const SpecialSessionPage = () => {
                             <p>
                                 Please use <a href="#" style={{ color: '#00629b' }}><em><strong>the template</strong></em></a> provided for filling up the proposal.<br />
                                 <a href="#" style={{ color: '#00629b' }}>Special_Session_Proposal_Template.docx</a><br />
-                                All Special Sessions will follow the standard iSPEC peer-review process. Accepted papers will be published in the conference proceedings.<br />
+                                All Special Sessions will follow the standard iSPEC peer-review process. Accepted papers will be published in the confeence proceedings.<br />
                                 Special Session proposals should be submitted to <strong>special session chair</strong> via email.<br />
                                 For proposal submission details and enquiries, please contact:<br />
                                 <strong>Special Session Chair: </strong>Dr.Boby Philip <a href="mailto:boby.philip@ieee.org" style={{ color: '#00629b' }}>boby.philip@ieee.org</a>
