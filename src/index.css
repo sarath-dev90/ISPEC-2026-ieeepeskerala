@@ -2295,6 +2295,18 @@ footer {
   padding: 2.5rem;
 }
 
+/* Hide caret everywhere */
+* {
+  caret-color: transparent;
+}
+
+/* Allow caret in form fields */
+input,
+textarea,
+[contenteditable="true"] {
+  caret-color: auto;
+}
+
 .hero-label {
   font-size: 0.75rem;
   font-weight: 800;
@@ -2321,7 +2333,10 @@ footer {
   border: none;
   text-transform: uppercase;
   letter-spacing: 0.05em;
+  border-radius: 10px;
 }
+
+
 
 .hero-btn-secondary {
   background-color: #ffffff;
@@ -2332,6 +2347,7 @@ footer {
   border: none;
   text-transform: uppercase;
   letter-spacing: 0.05em;
+  border-radius: 10px;
 }
 
 .hero-divider {

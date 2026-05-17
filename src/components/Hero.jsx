@@ -34,7 +34,7 @@ const Hero = () => {
   };
 
   return (
-    <section className="relative min-h-screen overflow-hidden flex items-center">
+    <section className="relative min-h-screen overflow-hidden flex items-start pt-32">
       {/* ── BACKGROUND LAYER (SLIDER) ── */}
       <div className="absolute inset-0 z-0">
         {/* Static image behind slider to prevent black flash during initial load */}
@@ -51,14 +51,20 @@ const Hero = () => {
             className="absolute inset-0 w-full h-full object-cover"
           />
         </AnimatePresence>
-        {/* Deep Overlay to ensure text readability */}
-        <div className="absolute inset-0 bg-slate-950/70 z-10"></div>
+      
+        {/* Horizontal Linear Gradient (Dark on left, transparent on right) */}
+        <div 
+          className="absolute inset-0 z-10" 
+          style={{ 
+            background: 'linear-gradient(to right, rgba(2, 6, 23, 0.8) 0%, rgba(2, 6, 23, 0.6) 30%, rgba(2, 6, 23, 0.1) 85%, transparent 100%)' 
+          }}
+        ></div>
       </div>
         
       {/* ── Slider Navigation Buttons (Top Level) ── */}
       <button 
         onClick={prevBg}
-        className="hero-slider-btn z-50 cursor-pointer"
+        className="hero-slider-btn z-50 cursor-pointer !hidden md:!block"
         style={{ position: 'absolute', left: '2rem', top: '50%', transform: 'translateY(-50%)' }}
         aria-label="Previous background"
       >
@@ -67,7 +73,7 @@ const Hero = () => {
       
       <button 
         onClick={nextBg}
-        className="hero-slider-btn z-50 cursor-pointer"
+        className="hero-slider-btn z-50 cursor-pointer !hidden md:!block"
         style={{ position: 'absolute', right: '2rem', top: '50%', transform: 'translateY(-50%)' }}
         aria-label="Next background"
       >
@@ -75,7 +81,7 @@ const Hero = () => {
       </button>
 
       {/* ── MAIN CONTENT ── */}
-      <div className="relative z-10 container mx-auto px-6 lg:px-12 py-32">
+      <div className="relative z-10 container mx-auto px-6 lg:px-12 pt-16 pb-32">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
 
           {/* Left Column: Visionary Branding */}
@@ -100,9 +106,9 @@ const Hero = () => {
               >
                 iSPEC <span className="text-emerald-500">2026</span>
               </motion.h1>
-              <p className="text-emerald-50/70 text-xl md:text-2xl lg:text-3xl font-medium max-w-2xl leading-tight">
-                {conferenceInfo.theme}
-              </p>
+              <p className="text-white text-xl md:text-2xl lg:text-3xl font-medium max-w-2xl leading-tight mb-4">
+              {conferenceInfo.theme}
+            </p>
             </motion.div>
           </div>
 
@@ -117,8 +123,8 @@ const Hero = () => {
               {/* Event Details Section */}
               <div className="space-y-8">
                 <div>
-                  <span className="hero-label">Conference Dates</span>
-                  <div className="flex items-center gap-4 mt-2">
+                  <span className="hero-label ">Conference Dates</span>
+                  <div className="flex items-center gap-4">
                     <Calendar className="w-8 h-8 text-emerald-500 shrink-0" />
                     <span className="text-white text-2xl md:text-3xl font-bold">{conferenceInfo.date}</span>
                   </div>
@@ -130,7 +136,9 @@ const Hero = () => {
                   <span className="hero-label">Location / Venue</span>
                   <div className="flex items-center gap-4 mt-2">
                     <MapPin className="w-8 h-8 text-emerald-500 shrink-0" />
-                    <span className="text-white text-2xl md:text-3xl font-bold leading-tight">{conferenceInfo.venue}</span>
+
+                    <span className="text-white text-2xl md:text-3xl font-bold leading-tight">  
+                      {conferenceInfo.venue}</span>
                   </div>
                 </div>
               </div>
@@ -138,12 +146,10 @@ const Hero = () => {
               {/* Action Buttons Group (No Hover Effects as requested) */}
               <div className="mt-12 flex flex-col gap-4">
                 <Link to="/call-for-papers" className="w-full">
-                  <button className="hero-btn-primary w-full flex items-center justify-center gap-3">
-                    <FileText className="w-6 h-6" />
+                  <button className="hero-btn-primary w-full">
                     CALL FOR PAPERS
                   </button>
                 </Link>
-
                 <Link to="/about" className="w-full">
                   <button className="hero-btn-secondary w-full">
                     DISCOVER MORE
