@@ -280,7 +280,7 @@ const SponsorshipPage = () => {
                                 </div>
                             </div>
                             <p style={{ fontSize: '1.1rem', color: '#555', fontWeight: '500', fontStyle: 'italic', textAlign: 'center', marginTop: '30px', marginBottom: 0 }}>
-                                We look forward to welcoming you to iSPEC 2026 at Hyatt Regency Trivandrum.
+                                We look forward to welcoming you to iSPEC 2026 at Mar Baselios College of Engineering and Technology, Thiruvananthapuram.
                             </p>
                         </div>
                     </section>

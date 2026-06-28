@@ -9,7 +9,7 @@ const TravelPage = () => (
             <p style={{ fontSize: '1.08rem', color: '#444', lineHeight: '1.8', marginBottom: '40px' }}>
                 Trivandrum (Thiruvananthapuram), the capital city of Kerala, is known for its rich cultural heritage,
                 beautiful beaches, and historical landmarks. The conference venue,{' '}
-                <strong>Hyatt Regency Trivandrum</strong>, is centrally located and easily accessible from major
+                <strong>Mar Baselios College of Engineering and Technology</strong>, is centrally located and easily accessible from major
                 transport hubs.
             </p>
 
@@ -48,7 +48,7 @@ const TravelPage = () => (
             {/* ── Maps CTA ── */}
             <div style={{ marginTop: '48px', textAlign: 'center' }}>
                 <a
-                    href="https://maps.app.goo.gl/BdjXJGPBDBMivSgf8"
+                    href="https://maps.google.com/?q=Mar+Baselios+College+of+Engineering+and+Technology,+Thiruvananthapuram"
                     target="_blank"
                     rel="noopener noreferrer"
                     style={{
@@ -66,7 +66,7 @@ const TravelPage = () => (
                     View Venue on Google Maps
                 </a>
                 <p style={{ marginTop: '10px', color: '#888', fontSize: '0.9rem' }}>
-                    Hyatt Regency Trivandrum · NH Bypass, Chakka, Thiruvananthapuram, Kerala 695024
+                    Mar Baselios College of Engineering and Technology, Thiruvananthapuram, Keralam, India
                 </p>
             </div>
 

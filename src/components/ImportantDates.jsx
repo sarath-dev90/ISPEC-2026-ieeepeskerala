@@ -24,7 +24,7 @@ const ImportantDates = () => {
                 <div className="dates-grid-cards">
                     {dates.map((item, index) => (
                         <div key={index} className="date-card">
-                            <h3 className="date-value">{item.date}</h3>
+                            <h3 className="date-value" style={{ fontSize: '1.8rem', fontWeight: 'bold' }}>{item.date}</h3>
                             <p className="date-label">{item.label}</p>
                         </div>
                     ))}

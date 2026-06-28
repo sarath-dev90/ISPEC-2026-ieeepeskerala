@@ -9,7 +9,7 @@ const ContactPage = () => {
         { icon: 'fa-envelope', label: 'General Enquiries', name: 'iSPEC 2026', email: 'contact@ispec2026.org', accent: '#2e8b57' },
         { icon: 'fa-user-tie', label: 'General Chair', name: 'Dr. Ajith Gopi', email: 'ajithgopi@ieee.org', accent: '#00629b' },
         { icon: 'fa-user-tie', label: 'General Co-Chair', name: 'Dr. Boby Philip', email: 'boby.philip@ieee.org', accent: '#00629b' },
-        { icon: 'fa-map-marker-alt', label: 'Venue', name: ' Trivandrum', email: null, accent: '#e65100', extra: 'Kerala, India' },
+        { icon: 'fa-map-marker-alt', label: 'Venue', name: 'Mar Baselios College of Engineering and Technology', email: null, accent: '#e65100', extra: 'Thiruvananthapuram, Keralam, India' },
     ];
 
     const handleSubmit = async (e) => {
