@@ -3,7 +3,10 @@ import { Link } from 'react-router-dom';
 import PageLayout from '../components/PageLayout';
 
 const SpecialSessionPage = () => {
-    return (
+    // TEMPORARILY DISABLED: Uncomment the return block below to bring the page back online.
+    return null;
+
+    /* return (
         <PageLayout title="Special Session">
             <div className="container" style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 15px' }}>
                 <div className="section-content" style={{ paddingBottom: '60px' }}>
@@ -20,7 +23,7 @@ const SpecialSessionPage = () => {
                     </div>
 
                     <div style={{ display: 'flex', flexWrap: 'wrap', margin: '0 -15px' }}>
-                        {/* Left Column (Main Content) */}
+                        {/* Left Column (Main Content) * /}
                         <div style={{ flex: '0 0 100%', maxWidth: '100%', padding: '0 15px', marginBottom: '40px' }} className="col-lg-8 col-md-12">
                             <h2 style={{ fontSize: '2rem', marginBottom: '20px', color: '#333' }}><span>Scope of Special Session</span></h2>
                             <div style={{ fontSize: '1.05rem', lineHeight: '1.6', color: '#444', marginBottom: '30px' }}>
@@ -51,7 +54,7 @@ const SpecialSessionPage = () => {
                             </div>
                         </div>
 
-                        {/* Right Column (Sidebar) */}
+                        {/* Right Column (Sidebar) * /}
                         <div style={{ flex: '0 0 100%', maxWidth: '100%', padding: '0 15px' }} className="col-lg-4 col-md-12">
                             <h2 style={{ fontSize: '2rem', marginBottom: '20px', color: '#333' }}><span>Important Dates</span></h2>
                             <div style={{ fontSize: '1.05rem', lineHeight: '1.6', color: '#444' }}>
@@ -66,7 +69,7 @@ const SpecialSessionPage = () => {
                         </div>
                     </div>
 
-                    {/* Bottom Full Width Content */}
+                    {/* Bottom Full Width Content * /}
                     <div style={{ marginTop: '30px' }}>
                         <h2 style={{ fontSize: '2rem', marginBottom: '20px', color: '#333' }}><span>Proposal Submission</span></h2>
                         <div style={{ fontSize: '1.05rem', lineHeight: '1.6', color: '#444' }}>
@@ -91,6 +94,7 @@ const SpecialSessionPage = () => {
             `}</style>
         </PageLayout>
     );
+    */
 };
 
 export default SpecialSessionPage;
