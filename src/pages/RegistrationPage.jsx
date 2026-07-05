@@ -1,51 +1,41 @@
 import React, { useState } from 'react';
 import PageLayout from '../components/PageLayout';
 
+
 /* ── Fee data ── */
 const feeGroups = [
     {
-        id: 'industry', label: '🏭 Industry Professionals',
+        id: 'professional', label: 'Professional Registration',
         rows: [
-            { name: 'PES Member', ebIn: 'XXXXX', ebFo: 'XXXXX', stIn: 'XXXXX', stFo: 'XXXXX' },
-            { name: 'IEEE Member', ebIn: '₹ 9,000', ebFo: '300 USD', stIn: '₹ 10,000', stFo: '350 USD' },
-            { name: 'Non-Member', ebIn: '₹ 10,000', ebFo: '350 USD', stIn: '₹ 11,000', stFo: '400 USD' },
+            { name: 'PES Member', earlyBird: '₹9,000', regular: '₹11,000' },
+            { name: 'IEEE Member', earlyBird: '₹10,000', regular: '₹12,000' },
+            { name: 'Non-IEEE Member', earlyBird: '₹12,000', regular: '₹14,000' },
         ]
     },
     {
-        id: 'academia', label: '🎓 Academia',
+        id: 'student', label: 'Student Registration',
         rows: [
-            { name: 'PES Member', ebIn: 'XXXXX', ebFo: 'XXXXX', stIn: 'XXXXX', stFo: 'XXXXX' },
-            { name: 'IEEE Member', ebIn: '₹ 8,000', ebFo: '250 USD', stIn: '₹ 9,000', stFo: '300 USD' },
-            { name: 'Non-Member', ebIn: '₹ 9,000', ebFo: '300 USD', stIn: '₹ 10,000', stFo: '350 USD' },
+            { name: 'PES Graduate Student Member', earlyBird: '₹6,500', regular: '₹7,500' },
+            { name: 'IEEE Graduate Student Member', earlyBird: '₹7,000', regular: '₹8,000' },
+            { name: 'PES Undergraduate Student Member', earlyBird: '₹5,500', regular: '₹6,500' },
+            { name: 'IEEE Undergraduate Student Member', earlyBird: '₹6,000', regular: '₹7,000' },
+            { name: 'Non-IEEE Student Member', earlyBird: '₹8,000', regular: '₹9,000' },
         ]
     },
     {
-        id: 'students', label: '📚 Students / Additional Delegates',
+        id: 'life', label: 'IEEE Life Member',
         rows: [
-            { name: 'Student PES Member', ebIn: 'XXXXX', ebFo: 'XXXXX', stIn: 'XXXXX', stFo: 'XXXXX' },
-            { name: 'IEEE Member', ebIn: '₹ 6,000', ebFo: '150 USD', stIn: '₹ 7,000', stFo: '200 USD' },
-            { name: 'Non-Member', ebIn: '₹ 7,000', ebFo: '200 USD', stIn: '₹ 8,000', stFo: '250 USD' },
-            { name: 'Student Non-IEEE Member', ebIn: 'XXXXX', ebFo: 'XXXXX', stIn: 'XXXXX', stFo: 'XXXXX' },
+            { name: 'IEEE Life Member', earlyBird: '₹6,000', regular: '₹7,000' },
         ]
     },
     {
-        id: 'life', label: '⭐ IEEE Life Member',
+        id: 'foreign', label: 'Foreign Participants',
         rows: [
-            { name: 'IEEE Life Member', ebIn: '₹ 6,000', ebFo: '150 USD', stIn: '₹ 7,000', stFo: '200 USD' },
+             { name: 'PES Member', earlyBird: '$270', regular: '$350' },
+             { name: 'IEEE Member', earlyBird: '$300', regular: '$400' },
+             { name: 'Non-IEEE Member', earlyBird: '$350', regular: '$500' }, 
         ]
-    },
-    {
-        id: 'addpaper', label: '📄 Additional Paper',
-        rows: [
-            { name: 'Additional Paper', ebIn: 'XXXXX', ebFo: 'XXXXX', stIn: 'XXXXX', stFo: 'XXXXX' },
-        ]
-    },
-    {
-        id: 'nonpresenter', label: '👤 Non-Presenters',
-        rows: [
-            { name: 'Delegate Registration', ebIn: '₹ 7,000', ebFo: '200 USD', stIn: '₹ 7,000', stFo: '200 USD' },
-        ]
-    },
+    }
 ];
 
 /* ── Collapsible fee table ── */
@@ -62,7 +52,7 @@ const FeeTable = () => {
 
     const cellBase = { padding: '11px 14px', fontSize: '0.96rem', color: '#444' };
     const labelCell = { ...cellBase, textAlign: 'left', paddingLeft: '28px' };
-    const midCell = { ...cellBase, borderRight: '1px solid #eee' };
+    const midCell = { ...cellBase, borderLeft: '1px solid #eee', borderRight: '1px solid #eee' };
 
     return (
         <>
@@ -71,17 +61,16 @@ const FeeTable = () => {
                 <button
                     onClick={toggleAll}
                     className={`btn-expand-all${allExpanded ? ' is-expanded' : ''}`}
+                    style={{ cursor: 'pointer', padding: '6px 12px', borderRadius: '5px', border: '1px solid #ccc', background: '#f8f9fa', fontSize: '0.9rem' }}
                 >
                     <i className={`fas ${allExpanded ? 'fa-eye-slash' : 'fa-eye'}`}></i>
-                    {allExpanded ? 'Collapse All' : 'Expand All'}
+                    {allExpanded ? ' Collapse All' : ' Expand All'}
                 </button>
             </div>
 
             <div style={{ border: '1px solid #e0e0e0', borderRadius: '10px', overflow: 'hidden', overflowX: 'auto' }}>
                 <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'center', backgroundColor: '#fff', minWidth: '700px' }}>
-                    <thead>
-                        {/* Headers removed as requested */}
-                    </thead>
+                    {/* The permanent <thead> has been completely removed from here */}
                     <tbody>
                         {feeGroups.map((group) => (
                             <React.Fragment key={group.id}>
@@ -92,42 +81,54 @@ const FeeTable = () => {
                                     onMouseEnter={e => e.currentTarget.style.backgroundColor = '#c8e3f5'}
                                     onMouseLeave={e => e.currentTarget.style.backgroundColor = open[group.id] ? '#d8edf9' : '#eaf3fb'}
                                 >
-                                    <td colSpan={5} style={{
-                                        padding: '11px 15px', textAlign: 'left', fontWeight: 'bold',
-                                        color: '#00629b', fontSize: '1rem',
-                                        borderBottom: open[group.id] ? '1px solid #b8d8f0' : '1px solid #d0e4f5',
-                                        display: 'flex', alignItems: 'center', justifyContent: 'space-between'
+                                    <td colSpan={3} style={{
+                                        padding: '12px 15px', textAlign: 'left', fontWeight: 'bold',
+                                        color: '#00629b', fontSize: '1.05rem',
+                                        borderBottom: open[group.id] ? 'none' : '1px solid #d0e4f5',
                                     }}>
-                                        <span>{group.label}</span>
-                                        <span style={{
-                                            fontSize: '0.8rem', color: '#00629b',
-                                            transform: open[group.id] ? 'rotate(180deg)' : 'rotate(0deg)',
-                                            transition: 'transform 0.3s ease', display: 'inline-block'
-                                        }}>
-                                            <i className="fas fa-chevron-down"></i>
-                                        </span>
+                                        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                                            <span>{group.label}</span>
+                                            <span style={{
+                                                fontSize: '0.8rem', color: '#00629b',
+                                                transform: open[group.id] ? 'rotate(180deg)' : 'rotate(0deg)',
+                                                transition: 'transform 0.3s ease', display: 'inline-block'
+                                            }}>
+                                                <i className="fas fa-chevron-down"></i>
+                                            </span>
+                                        </div>
                                     </td>
                                 </tr>
 
-                                {/* Animated sub-rows */}
+                                {/* Conditionally rendered column headers inside the dropdown */}
+                                {open[group.id] && (
+                                    <tr style={{
+                                        backgroundColor: '#f0f4f8',
+                                        color: '#444',
+                                        borderBottom: '2px solid #d0e4f5',
+                                        animation: `fadeSlideIn 0.2s ease 0s both`
+                                    }}>
+                                        <th style={{ padding: '10px 14px', textAlign: 'left', paddingLeft: '28px', width: '40%', fontSize: '0.9rem' }}>Registration Category</th>
+                                        <th style={{ padding: '10px 14px', fontSize: '0.9rem' }}>Early Bird<br/><span style={{fontSize: '0.75rem', fontWeight: 'normal', color: '#666'}}>(On/Before 15 Oct 2026)</span></th>
+                                        <th style={{ padding: '10px 14px', fontSize: '0.9rem' }}>Regular<br/><span style={{fontSize: '0.75rem', fontWeight: 'normal', color: '#666'}}>(After 15 Oct 2026)</span></th>
+                                    </tr>
+                                )}
+
+                                {/* Animated data rows */}
                                 {group.rows.map((row, ri) => (
                                     <tr key={ri} style={{
-                                        backgroundColor: ri % 2 === 0 ? '#fff' : '#f8f9fa',
+                                        backgroundColor: ri % 2 === 0 ? '#fff' : '#fcfcfc',
                                         borderBottom: '1px solid #eee',
                                         display: open[group.id] ? 'table-row' : 'none',
-                                        animation: open[group.id] ? `fadeSlideIn 0.2s ease ${ri * 0.04}s both` : 'none',
+                                        /* Slight delay added to data rows so they animate in right after the headers */
+                                        animation: open[group.id] ? `fadeSlideIn 0.2s ease ${(ri + 1) * 0.04}s both` : 'none',
                                     }}>
                                         <td style={labelCell}>{row.name}</td>
-                                        <td style={cellBase}>{row.ebIn}</td>
-                                        <td style={midCell}>{row.ebFo}</td>
-                                        <td style={cellBase}>{row.stIn}</td>
-                                        <td style={cellBase}>{row.stFo}</td>
+                                        <td style={midCell}>{row.earlyBird}</td>
+                                        <td style={cellBase}>{row.regular}</td>
                                     </tr>
                                 ))}
                             </React.Fragment>
                         ))}
-
-                        {/* Add-ons removed as requested */}
                     </tbody>
                 </table>
             </div>
@@ -148,19 +149,21 @@ const tcSections = [
         title: 'Items Included in Registration Fee',
         body: (<>
             <p style={{ fontWeight: '600', marginBottom: '8px' }}>Regular (Early Bird / Standard) includes:</p>
-            <ul style={{ paddingLeft: '20px', marginBottom: '16px' }}>
-                <li>Conference kit</li>
-                <li>Admission to all sessions, tea/coffee breaks, and lunches</li>
-                <li>Conference gala dinner</li>
-            </ul>
+            <div style={{ paddingLeft: '20px', marginBottom: '16px' }}>
+                <p style={{ marginBottom: '6px' }}>Conference kit</p>
+                <p style={{ marginBottom: '6px' }}>Admission to all sessions, tea/coffee breaks, and lunches</p>
+                <p style={{ marginBottom: '0' }}>Conference gala dinner</p>
+            </div>
+            
             <p style={{ fontWeight: '600', marginBottom: '8px' }}>Non-Presenter / Companion includes:</p>
-            <ul style={{ paddingLeft: '20px' }}>
-                <li>Conference kit</li>
-                <li>Admission to all sessions, tea/coffee breaks, and lunches</li>
-                <li>Gala dinner available as add-on</li>
-            </ul>
+            <div style={{ paddingLeft: '20px' }}>
+                <p style={{ marginBottom: '6px' }}>Conference kit</p>
+                <p style={{ marginBottom: '6px' }}>Admission to all sessions, tea/coffee breaks, and lunches</p>
+                <p style={{ marginBottom: '0' }}>Gala dinner available as add-on</p>
+            </div>
         </>)
     },
+
     {
         title: 'Early Registration (Early Bird)',
         body: <p>Authors paying by <strong>15 September 2026</strong> benefit from the Early Bird rate.</p>
@@ -192,11 +195,11 @@ const tcSections = [
         title: 'Cancellation Policy',
         body: (<>
             <p style={{ marginBottom: '10px' }}>Cancellations must be notified in writing to <a href="mailto:contact@ispec2026.org" style={{ color: '#2e8b57' }}>contact@ispec2026.org</a>.</p>
-            <ul style={{ paddingLeft: '20px' }}>
-                <li style={{ marginBottom: '8px' }}>Cancellations <strong>before 1 November 2026</strong>: subject to a <strong>50% charge</strong>.</li>
-                <li style={{ marginBottom: '8px' }}>Registration may be <strong>transferred</strong> to another person free of charge.</li>
-                <li><strong>No refund</strong> after <strong>1 November 2026</strong>.</li>
-            </ul>
+            <div style={{ paddingLeft: '20px' }}>
+                <p style={{ marginBottom: '8px' }}>Cancellations <strong>before 1 November 2026</strong>: subject to a <strong>50% charge</strong>.</p>
+                <p style={{ marginBottom: '8px' }}>Registration may be <strong>transferred</strong> to another person free of charge.</p>
+                <p style={{ marginBottom: '0' }}><strong>No refund</strong> after <strong>1 November 2026</strong>.</p>
+            </div>
         </>)
     },
     {
@@ -245,17 +248,17 @@ const RegistrationPage = () => {
                 </section>
 
                 {/* Registration Period */}
-                <h3 style={{ fontSize: '1.4rem', color: '#00629b', marginBottom: '15px', fontWeight: 'bold', borderLeft: '4px solid #2e8b57', paddingLeft: '10px' }}>Registration Period</h3>
+                <h3 style={{ fontSize: '1.4rem', color: '#00629b', marginBottom: '15px', fontWeight: 'bold',  }}>Registration Period</h3>
                 <div style={{ marginBottom: '35px', paddingLeft: '14px', fontSize: '1.05rem', color: '#444' }}>
                     <ul style={{ listStyleType: 'disc', paddingLeft: '20px' }}>
-                        <li style={{ marginBottom: '8px' }}><strong>Early-bird Registration:</strong> until 15 September 2026</li>
-                        <li style={{ marginBottom: '8px' }}><strong>Standard Registration:</strong> 16 September 2026 – 1 November 2026</li>
+                        <li style={{ marginBottom: '8px' }}><strong>Early-bird Registration:</strong> until 15 October 2026</li>
+                        <li style={{ marginBottom: '8px' }}><strong>Standard Registration:</strong> 16 October 2026 – 1 November 2026</li>
                         <li style={{ marginBottom: '8px' }}><strong>Onsite Registration:</strong> After 1 November 2026</li>
                     </ul>
                 </div>
 
                 {/* Registration Inclusions */}
-                <h3 style={{ fontSize: '1.4rem', color: '#00629b', marginBottom: '20px', fontWeight: 'bold', borderLeft: '4px solid #2e8b57', paddingLeft: '10px' }}>Registration Inclusions</h3>
+                <h3 style={{ fontSize: '1.4rem', color: '#00629b', marginBottom: '20px', fontWeight: 'bold', }}>Registration Inclusions</h3>
                 <div style={{ border: '1px solid #e0e0e0', borderRadius: '8px', overflow: 'hidden', marginBottom: '40px', overflowX: 'auto' }}>
                     <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'center', backgroundColor: '#fff' }}>
                         <thead>
@@ -305,18 +308,32 @@ const RegistrationPage = () => {
                 <div style={{ height: '1px', background: '#e0e0e0', margin: '40px 0' }}></div>
 
                 {/* Terms & Conditions */}
+               
                 <section style={{ marginBottom: '20px', textAlign: 'center' }}>
                     <h2 style={{ fontSize: '2rem', color: '#00629b', marginBottom: '30px', fontWeight: 'bold', borderBottom: '3px solid #2e8b57', paddingBottom: '12px', display: 'inline-block' }}>
                         Terms &amp; Conditions
                     </h2>
-                    <div style={{ background: '#fff8e1', border: '1px solid #ffe082', borderRadius: '10px', padding: '20px 25px', marginBottom: '30px', maxWidth: '800px', margin: '0 auto 30px' }}>
-                        <p style={{ margin: 0, fontSize: '1.05rem', color: '#444', lineHeight: '1.7' }}>
-                            <strong>⚠️ Important:</strong> At least one author of each accepted paper must register. Each registration covers a maximum of <strong>two (2) papers</strong>, with a limit of <strong>6 pages per paper</strong>. Each additional page incurs <strong>XXXXX INR</strong> per page. Payment deadline: <strong>1 November 2026</strong>.
-                        </p>
+                    
+                    
+                    <div style={{ background: '#fff8e1', border: '1px solid #ffe082', borderRadius: '10px', padding: '20px 25px', marginBottom: '30px', maxWidth: '800px', margin: '0 auto 30px', textAlign: 'left' }}>
+                        
+                        <h3 style={{ fontSize: '1.25rem', color: '#b28900', marginBottom: '15px', fontWeight: 'bold', display: 'flex', alignItems: 'center', gap: '8px' }}>
+                            <i className="fas fa-exclamation-triangle"></i> Important Notice
+                        </h3>
+                        
+                        
+                        <ul style={{ paddingLeft: '20px', margin: 0, fontSize: '1.05rem', color: '#444', lineHeight: '1.7' }}>
+                            <li style={{ marginBottom: '12px' }}>
+                                At least one author of each accepted paper must register. Each registration covers a maximum of <strong>two (2) papers</strong>, with a limit of <strong>6 pages per paper</strong>. Each additional page incurs <strong>XXXXX INR</strong> per page. Payment deadline: <strong>1 November 2026</strong>.
+                            </li>
+                            <li>
+                                Each registration is valid for one paper only. With one registration, ONLY one additional paper will be considered upon payment of an additional 50% of the applicable registration fee.
+                            </li>
+                        </ul>
                     </div>
 
                     {tcSections.map(({ title, body }, i) => (
-                        <div key={i} style={{ marginBottom: '28px', maxWidth: '800px', margin: '0 auto 28px' }}>
+                        <div key={i} style={{ marginBottom: '28px', maxWidth: '800px', margin: '0 auto 28px', textAlign: 'left' }}>
                             <h3 style={{ fontSize: '1.3rem', color: '#00629b', marginBottom: '12px', fontWeight: 'bold' }}>{title}</h3>
                             <div style={{ fontSize: '1.02rem', color: '#444', lineHeight: '1.7' }}>{body}</div>
                         </div>
