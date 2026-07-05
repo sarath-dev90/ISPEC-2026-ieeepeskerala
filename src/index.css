@@ -2295,12 +2295,10 @@ footer {
   padding: 2.5rem;
 }
 
-/* Hide caret everywhere */
 * {
   caret-color: transparent;
 }
 
-/* Allow caret in form fields */
 input,
 textarea,
 [contenteditable="true"] {
